@@ -111,6 +111,17 @@ function AuthPage() {
         }
         await redirectByRole();
       }
+    } catch (err) {
+      const message = (err as Error)?.message || "Naməlum xəta baş verdi";
+      const lower = message.toLowerCase();
+      if (lower.includes("already") || lower.includes("registered")) {
+        toast.error("Bu e-poçt artıq qeydiyyatdan keçib");
+      } else if (lower.includes("rate") || lower.includes("limit")) {
+        toast.error("Çox sayda cəhd — bir az gözləyin");
+      } else {
+        toast.error(message);
+      }
+      console.error("auth error", err);
     } finally {
       setBusy(false);
     }
