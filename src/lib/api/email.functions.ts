@@ -153,7 +153,7 @@ export const sendTransferEmail = createServerFn({ method: "POST" })
           .select("user_id, iban")
           .ilike("iban", normalized)
           .maybeSingle();
-        if (byIban) recipientAccount = byIban as typeof recipientAccount;
+        if (byIban) recipientAccount = { user_id: byIban.user_id, iban: byIban.iban };
         if (!recipientAccount) {
           const { data: byCard } = await supabaseAdmin
             .from("cards")
