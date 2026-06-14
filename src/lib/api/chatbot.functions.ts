@@ -37,7 +37,8 @@ Qaydalar:
 export const chatbotAsk = createServerFn({ method: "POST" })
   .inputValidator((d: unknown) => InputSchema.parse(d))
   .handler(async ({ data }) => {
-    const key = process.env.LOVABLE_API_KEY;
+    const { getSecret } = await import("@/lib/secrets.server");
+    const key = await getSecret("LOVABLE_API_KEY");
     if (!key) throw new Error("AI xidməti hazırda əlçatan deyil");
 
     const { generateText } = await import("ai");

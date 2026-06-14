@@ -103,7 +103,8 @@ export const sendTransferEmail = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((d: unknown) => TransferEmailSchema.parse(d))
   .handler(async ({ data, context }) => {
-    const apiKey = process.env.RESEND_API_KEY;
+    const { getSecret } = await import("@/lib/secrets.server");
+    const apiKey = await getSecret("RESEND_API_KEY");
     if (!apiKey) return { sent: false, reason: "no_api_key" };
 
     const { data: prof } = await context.supabase
