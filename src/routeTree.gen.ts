@@ -20,7 +20,6 @@ import { Route as AuthenticatedDashboardRouteImport } from './routes/_authentica
 import { Route as AuthenticatedCardsRouteImport } from './routes/_authenticated/cards'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as AuthenticatedAccountsRouteImport } from './routes/_authenticated/accounts'
-import { Route as ApiPublicSyncLovableKeyRouteImport } from './routes/api/public/sync-lovable-key'
 
 const ResetPasswordRoute = ResetPasswordRouteImport.update({
   id: '/reset-password',
@@ -77,11 +76,6 @@ const AuthenticatedAccountsRoute = AuthenticatedAccountsRouteImport.update({
   path: '/accounts',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
-const ApiPublicSyncLovableKeyRoute = ApiPublicSyncLovableKeyRouteImport.update({
-  id: '/api/public/sync-lovable-key',
-  path: '/api/public/sync-lovable-key',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -94,7 +88,6 @@ export interface FileRoutesByFullPath {
   '/settings': typeof AuthenticatedSettingsRoute
   '/transactions': typeof AuthenticatedTransactionsRoute
   '/transfers': typeof AuthenticatedTransfersRoute
-  '/api/public/sync-lovable-key': typeof ApiPublicSyncLovableKeyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -107,7 +100,6 @@ export interface FileRoutesByTo {
   '/settings': typeof AuthenticatedSettingsRoute
   '/transactions': typeof AuthenticatedTransactionsRoute
   '/transfers': typeof AuthenticatedTransfersRoute
-  '/api/public/sync-lovable-key': typeof ApiPublicSyncLovableKeyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -122,7 +114,6 @@ export interface FileRoutesById {
   '/_authenticated/settings': typeof AuthenticatedSettingsRoute
   '/_authenticated/transactions': typeof AuthenticatedTransactionsRoute
   '/_authenticated/transfers': typeof AuthenticatedTransfersRoute
-  '/api/public/sync-lovable-key': typeof ApiPublicSyncLovableKeyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -137,7 +128,6 @@ export interface FileRouteTypes {
     | '/settings'
     | '/transactions'
     | '/transfers'
-    | '/api/public/sync-lovable-key'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -150,7 +140,6 @@ export interface FileRouteTypes {
     | '/settings'
     | '/transactions'
     | '/transfers'
-    | '/api/public/sync-lovable-key'
   id:
     | '__root__'
     | '/'
@@ -164,7 +153,6 @@ export interface FileRouteTypes {
     | '/_authenticated/settings'
     | '/_authenticated/transactions'
     | '/_authenticated/transfers'
-    | '/api/public/sync-lovable-key'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -172,7 +160,6 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
-  ApiPublicSyncLovableKeyRoute: typeof ApiPublicSyncLovableKeyRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -254,13 +241,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAccountsRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/api/public/sync-lovable-key': {
-      id: '/api/public/sync-lovable-key'
-      path: '/api/public/sync-lovable-key'
-      fullPath: '/api/public/sync-lovable-key'
-      preLoaderRoute: typeof ApiPublicSyncLovableKeyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
@@ -292,7 +272,6 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
   ResetPasswordRoute: ResetPasswordRoute,
-  ApiPublicSyncLovableKeyRoute: ApiPublicSyncLovableKeyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
