@@ -35,9 +35,9 @@ function Landing() {
           <span className="font-bold text-lg">{t("appName")}</span>
         </div>
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-muted-foreground">
-          <a href="#features" className="hover:text-foreground transition-colors">Üstünlüklər</a>
-          <a href="#how" className="hover:text-foreground transition-colors">Necə işləyir</a>
-          <a href="#faq" className="hover:text-foreground transition-colors">FAQ</a>
+          <a href="#features" className="hover:text-foreground transition-colors">{t("navFeatures")}</a>
+          <a href="#how" className="hover:text-foreground transition-colors">{t("navHow")}</a>
+          <a href="#faq" className="hover:text-foreground transition-colors">{t("navFaq")}</a>
         </nav>
         <div className="flex items-center gap-1">
           <DropdownMenu>
@@ -62,22 +62,22 @@ function Landing() {
         <div className="grid md:grid-cols-2 gap-10 items-center">
           <div>
             <div className="inline-flex items-center gap-2 text-xs font-medium bg-primary/10 text-primary px-3 py-1 rounded-full animate-fade-in-down">
-              <ShieldCheck className="w-3.5 h-3.5" /> Bank səviyyəsində təhlükəsizlik · Lisenziyalı
+              <ShieldCheck className="w-3.5 h-3.5" /> {t("heroBadge")}
             </div>
             <h1 className="mt-5 text-4xl md:text-6xl font-bold tracking-tight text-foreground leading-[1.05] animate-fade-in-up">
-              Cibinizdəki <span className="text-primary bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent animate-gradient-x">smart bank</span>
+              {t("heroTitle1")} <span className="text-primary bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent animate-gradient-x">{t("heroTitle2")}</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-lg animate-fade-in-up delay-200">
-              APEX BANK ilə hesab açın, kart sifariş edin və komissiyasız köçürmələr edin — hamısı 2 dəqiqədə, filiala getmədən.
+              {t("heroDesc")}
             </p>
             <div className="mt-8 flex gap-3 flex-wrap animate-fade-in-up delay-300">
-              <Link to="/auth" search={{ mode: "signup" }}><Button size="lg" className="gradient-primary border-0 h-12 px-6 hover-glow">Pulsuz hesab aç <ArrowRight className="w-4 h-4 ml-2" /></Button></Link>
+              <Link to="/auth" search={{ mode: "signup" }}><Button size="lg" className="gradient-primary border-0 h-12 px-6 hover-glow">{t("ctaOpenFree")} <ArrowRight className="w-4 h-4 ml-2" /></Button></Link>
               <Link to="/auth" search={{ mode: "signin" }}><Button size="lg" variant="outline" className="h-12 px-6 hover-lift">{t("login")}</Button></Link>
             </div>
             <div className="mt-10 grid grid-cols-3 gap-4 text-sm border-t pt-6 animate-fade-in-up delay-500">
-              <div><div className="text-2xl md:text-3xl font-bold text-primary">500K+</div><div className="text-muted-foreground mt-1">Aktiv müştəri</div></div>
-              <div><div className="text-2xl md:text-3xl font-bold text-primary">24/7</div><div className="text-muted-foreground mt-1">Canlı dəstək</div></div>
-              <div><div className="text-2xl md:text-3xl font-bold text-primary">0 ₼</div><div className="text-muted-foreground mt-1">Aylıq xidmət</div></div>
+              <div><div className="text-2xl md:text-3xl font-bold text-primary">500K+</div><div className="text-muted-foreground mt-1">{t("statClients")}</div></div>
+              <div><div className="text-2xl md:text-3xl font-bold text-primary">24/7</div><div className="text-muted-foreground mt-1">{t("statSupport")}</div></div>
+              <div><div className="text-2xl md:text-3xl font-bold text-primary">0 ₼</div><div className="text-muted-foreground mt-1">{t("statFee")}</div></div>
             </div>
           </div>
 
@@ -90,7 +90,7 @@ function Landing() {
                   <div className="w-20 h-5 bg-foreground rounded-b-2xl" />
                 </div>
                 <div className="px-4 py-3 flex items-center justify-between">
-                  <div className="text-xs text-muted-foreground">Xoş gəlmisən</div>
+                  <div className="text-xs text-muted-foreground">{t("phWelcome")}</div>
                   <div className="w-7 h-7 rounded-full bg-primary/20 animate-pulse" />
                 </div>
                 <div className="mx-4 aspect-[1.6/1] rounded-2xl card-shine p-4 text-white flex flex-col justify-between shadow-xl relative overflow-hidden">
@@ -100,7 +100,7 @@ function Landing() {
                   <div className="flex justify-between text-[10px] relative"><span>YOUR NAME</span><span>12/30</span></div>
                 </div>
                 <div className="mx-4 mt-4 grid grid-cols-4 gap-2 text-[10px] text-center">
-                  {[{ i: Send, l: "Köçür" }, { i: Wallet, l: "Yüklə" }, { i: CreditCard, l: "Kart" }, { i: PiggyBank, l: "Yığ" }].map((q, i) => (
+                  {[{ i: Send, l: t("qSend") }, { i: Wallet, l: t("qLoad") }, { i: CreditCard, l: t("qCard") }, { i: PiggyBank, l: t("qSave") }].map((q, i) => (
                     <div key={i} className="flex flex-col items-center gap-1 animate-fade-in-up" style={{ animationDelay: `${600 + i * 100}ms` }}>
                       <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center hover:scale-110 transition-transform"><q.i className="w-4 h-4" /></div>
                       <span className="text-muted-foreground">{q.l}</span>
@@ -129,10 +129,10 @@ function Landing() {
       <section className="border-y bg-muted/30">
         <div className="max-w-6xl mx-auto px-4 md:px-10 py-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
           {[
-            { i: Zap, t: "2 dəqiqədə hesab" },
-            { i: Banknote, t: "Komissiyasız köçürmə" },
-            { i: Shield, t: "3D Secure qoruma" },
-            { i: Headphones, t: "24/7 canlı dəstək" },
+            { i: Zap, t: t("trust1") },
+            { i: Banknote, t: t("trust2") },
+            { i: Shield, t: t("trust3") },
+            { i: Headphones, t: t("trust4") },
           ].map((x, i) => (
             <div key={i} className="flex items-center gap-2 text-muted-foreground"><x.i className="w-4 h-4 text-primary" /><span>{x.t}</span></div>
           ))}
@@ -143,18 +143,18 @@ function Landing() {
       <section id="features" className="py-20">
         <div className="max-w-6xl mx-auto px-4 md:px-10">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 text-xs font-medium bg-primary/10 text-primary px-3 py-1 rounded-full mb-3">Üstünlüklər</div>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Hər şey bir tətbiqdə</h2>
-            <p className="mt-4 text-muted-foreground max-w-xl mx-auto">Bank işlərinizi tam idarə edin — istənilən vaxt, istənilən cihazdan.</p>
+            <div className="inline-flex items-center gap-2 text-xs font-medium bg-primary/10 text-primary px-3 py-1 rounded-full mb-3">{t("navFeatures")}</div>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight">{t("featuresTitle")}</h2>
+            <p className="mt-4 text-muted-foreground max-w-xl mx-auto">{t("featuresSub")}</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
-              { icon: Banknote, title: "Pulsuz köçürmələr", desc: "APEX daxili köçürmələr 0 komissiya ilə, saniyələr içində." },
-              { icon: CreditCard, title: "Anında virtual kart", desc: "Hesab açıldığı an virtual kart sifariş edin və onlayn ödəyin." },
-              { icon: PiggyBank, title: "Əmanət hesabları", desc: "Sərfəli faiz dərəcələri ilə pulunuzu artırın." },
-              { icon: Smartphone, title: "Mobil & Web", desc: "Telefon, planşet və komputerdə tam funksionallıq." },
-              { icon: Lock, title: "Biometrik giriş", desc: "Üz tanıma və barmaq izi ilə təhlükəsiz daxil olun." },
-              { icon: Globe, title: "3 dildə", desc: "Azərbaycan, English və Русский — sizin üçün rahat." },
+              { icon: Banknote, title: t("f1t"), desc: t("f1d") },
+              { icon: CreditCard, title: t("f2t"), desc: t("f2d") },
+              { icon: PiggyBank, title: t("f3t"), desc: t("f3d") },
+              { icon: Smartphone, title: t("f4t"), desc: t("f4d") },
+              { icon: Lock, title: t("f5t"), desc: t("f5d") },
+              { icon: Globe, title: t("f6t"), desc: t("f6d") },
             ].map((f, i) => (
               <Card key={i} className="p-6 hover-lift border-border/60 animate-fade-in-up" style={{ animationDelay: `${i * 80}ms` }}>
                 <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4 hover:scale-110 transition-transform"><f.icon className="w-6 h-6" /></div>
@@ -170,14 +170,14 @@ function Landing() {
       <section id="how" className="bg-muted/30 py-20">
         <div className="max-w-6xl mx-auto px-4 md:px-10">
           <div className="text-center mb-14">
-            <div className="inline-flex items-center gap-2 text-xs font-medium bg-primary/10 text-primary px-3 py-1 rounded-full mb-3">Necə işləyir</div>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight">3 sadə addımda başlayın</h2>
+            <div className="inline-flex items-center gap-2 text-xs font-medium bg-primary/10 text-primary px-3 py-1 rounded-full mb-3">{t("navHow")}</div>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight">{t("howTitle")}</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { n: "01", icon: UserPlus, t: "Qeydiyyatdan keçin", d: "Ad, e-poçt və şifrə ilə 30 saniyəyə hesab yaradın." },
-              { n: "02", icon: CreditCard, t: "Hesab və kart açın", d: "AZN/USD/EUR hesabları və virtual/debet kartlar bir kliklə." },
-              { n: "03", icon: Send, t: "Köçürmələrə başlayın", d: "IBAN və ya kart nömrəsi ilə anında pul göndərin." },
+              { n: "01", icon: UserPlus, t: t("h1t"), d: t("h1d") },
+              { n: "02", icon: CreditCard, t: t("h2t"), d: t("h2d") },
+              { n: "03", icon: Send, t: t("h3t"), d: t("h3d") },
             ].map((s, i) => (
               <Card key={i} className="p-7 relative overflow-hidden">
                 <div className="absolute top-3 right-4 text-5xl font-bold text-primary/10">{s.n}</div>
@@ -194,23 +194,23 @@ function Landing() {
       <section className="py-20">
         <div className="max-w-6xl mx-auto px-4 md:px-10 grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <div className="inline-flex items-center gap-2 text-xs font-medium bg-primary/10 text-primary px-3 py-1 rounded-full mb-3">Köçürmə</div>
-            <h2 className="text-3xl md:text-4xl font-bold">Köçürmələr saniyələr içində</h2>
-            <p className="mt-4 text-muted-foreground">IBAN və ya kart nömrəsi ilə anında köçürmə edin. Alıcı APEX müştərisidirsə adı avtomatik göstərilir və əməliyyat dərhal tamamlanır.</p>
+            <div className="inline-flex items-center gap-2 text-xs font-medium bg-primary/10 text-primary px-3 py-1 rounded-full mb-3">{t("transfers")}</div>
+            <h2 className="text-3xl md:text-4xl font-bold">{t("trTitle")}</h2>
+            <p className="mt-4 text-muted-foreground">{t("trDesc")}</p>
             <ul className="mt-6 space-y-3">
-              {["IBAN və kart nömrəsi ilə köçürmə","Alıcının adı avtomatik təsdiq","Hər iki tərəfə bildiriş","Tam əməliyyat tarixçəsi","Uçdan-uca şifrələnmə"].map((x, i) => (
+              {[t("trL1"), t("trL2"), t("trL3"), t("trL4"), t("trL5")].map((x, i) => (
                 <li key={i} className="flex items-center gap-2"><CheckCircle2 className="w-5 h-5 text-success shrink-0" /><span>{x}</span></li>
               ))}
             </ul>
           </div>
           <Card className="p-6 space-y-4 shadow-xl">
-            <div className="text-xs text-muted-foreground uppercase tracking-wide">Nümunə köçürmə</div>
+            <div className="text-xs text-muted-foreground uppercase tracking-wide">{t("sampleTransfer")}</div>
             <div className="space-y-3">
-              <div className="flex justify-between items-center p-3 bg-muted rounded-lg"><span className="text-sm">Hesabdan</span><span className="font-mono font-semibold text-sm">AZ21ATUB · AZN</span></div>
+              <div className="flex justify-between items-center p-3 bg-muted rounded-lg"><span className="text-sm">{t("fromAccount")}</span><span className="font-mono font-semibold text-sm">AZ21ATUB · AZN</span></div>
               <div className="text-center text-muted-foreground">↓</div>
               <div className="flex justify-between items-center p-3 bg-success/10 rounded-lg"><span className="text-sm">Əli Məmmədov</span><span className="font-bold text-success">+250.00 ₼</span></div>
             </div>
-            <Link to="/auth" search={{ mode: "signup" }}><Button className="w-full gradient-primary border-0 h-11">İndi başla</Button></Link>
+            <Link to="/auth" search={{ mode: "signup" }}><Button className="w-full gradient-primary border-0 h-11">{t("startNow")}</Button></Link>
           </Card>
         </div>
       </section>
@@ -219,13 +219,13 @@ function Landing() {
       <section className="bg-muted/30 py-20">
         <div className="max-w-6xl mx-auto px-4 md:px-10">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold">Müştərilər nə deyir</h2>
+            <h2 className="text-3xl md:text-4xl font-bold">{t("testimonialsTitle")}</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-5">
             {[
-              { n: "Aysel H.", t: "İlk dəfədir filiala getmədən kart açıram. 2 dəqiqədə hər şey hazır idi." },
-              { n: "Rəşad M.", t: "Pulsuz köçürmələr və sürətli tətbiq. Artıq əsas bankım APEX-dir." },
-              { n: "Nigar Q.", t: "Dizayn çox sadədir, anam belə rahat istifadə edir. Müştəri xidməti də əla." },
+              { n: "Aysel H.", t: t("t1") },
+              { n: "Rəşad M.", t: t("t2") },
+              { n: "Nigar Q.", t: t("t3") },
             ].map((r, i) => (
               <Card key={i} className="p-6">
                 <div className="flex gap-0.5 mb-3 text-warning">{[...Array(5)].map((_, j) => <Star key={j} className="w-4 h-4 fill-current" />)}</div>
@@ -244,14 +244,14 @@ function Landing() {
       <section id="faq" className="py-20">
         <div className="max-w-3xl mx-auto px-4 md:px-10">
           <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold">Tez-tez verilən suallar</h2>
+            <h2 className="text-3xl md:text-4xl font-bold">{t("faqTitle")}</h2>
           </div>
           <div className="space-y-3">
             {[
-              { q: "Hesab açmaq pulludur?", a: "Xeyr, APEX BANK-da hesab açmaq tamamilə pulsuzdur və aylıq xidmət haqqı tutulmur." },
-              { q: "Köçürmələrdə komissiya var?", a: "APEX daxili köçürmələr 0 komissiya ilə həyata keçirilir." },
-              { q: "Pulum nə qədər təhlükəsizdir?", a: "Bütün əməliyyatlar 3D Secure və uçdan-uca şifrələmə ilə qorunur." },
-              { q: "Hansı dillərdə işləyir?", a: "Azərbaycan, English və Русский dillərində tam dəstək var." },
+              { q: t("faq1q"), a: t("faq1a") },
+              { q: t("faq2q"), a: t("faq2a") },
+              { q: t("faq3q"), a: t("faq3a") },
+              { q: t("faq4q"), a: t("faq4a") },
             ].map((f, i) => (
               <details key={i} className="group border rounded-xl p-5 hover:border-primary/40 transition-colors">
                 <summary className="flex justify-between items-center cursor-pointer font-semibold list-none">
@@ -270,11 +270,11 @@ function Landing() {
         <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary/80" />
         <div className="max-w-4xl mx-auto px-4 md:px-10 text-center relative">
           <Building2 className="w-12 h-12 mx-auto mb-4 opacity-90" />
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Bu gün APEX-ə qoşulun</h2>
-          <p className="mt-4 opacity-90 max-w-xl mx-auto">Tətbiqi telefonunuzun ana ekranına əlavə edin və smart bank təcrübəsini dərhal yaşayın.</p>
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">{t("ctaJoinTitle")}</h2>
+          <p className="mt-4 opacity-90 max-w-xl mx-auto">{t("ctaJoinSub")}</p>
           <div className="mt-8 flex gap-3 justify-center flex-wrap">
-            <Link to="/auth" search={{ mode: "signup" }}><Button size="lg" variant="secondary" className="h-12 px-6">Pulsuz hesab yarat <ArrowRight className="w-4 h-4 ml-2" /></Button></Link>
-            <Button size="lg" variant="outline" className="h-12 px-6 bg-transparent border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"><Download className="w-4 h-4 mr-2" />Tətbiqi əlavə et</Button>
+            <Link to="/auth" search={{ mode: "signup" }}><Button size="lg" variant="secondary" className="h-12 px-6">{t("ctaCreateFree")} <ArrowRight className="w-4 h-4 ml-2" /></Button></Link>
+            <Button size="lg" variant="outline" className="h-12 px-6 bg-transparent border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"><Download className="w-4 h-4 mr-2" />{t("ctaAddApp")}</Button>
           </div>
         </div>
       </section>
@@ -285,8 +285,8 @@ function Landing() {
             <div className="w-7 h-7 rounded bg-white p-0.5"><img src={logoUrl} alt="APEX" className="w-full h-full object-contain" /></div>
             <span className="font-semibold text-foreground">APEX BANK</span>
           </div>
-          <div>© {new Date().getFullYear()} APEX BANK · Bütün hüquqlar qorunur</div>
-          <div className="flex gap-4"><a href="#features" className="hover:text-foreground">Üstünlüklər</a><a href="#faq" className="hover:text-foreground">FAQ</a></div>
+          <div>© {new Date().getFullYear()} APEX BANK · {t("rightsReserved")}</div>
+          <div className="flex gap-4"><a href="#features" className="hover:text-foreground">{t("navFeatures")}</a><a href="#faq" className="hover:text-foreground">{t("navFaq")}</a></div>
         </div>
       </footer>
     </div>

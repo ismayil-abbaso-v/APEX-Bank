@@ -264,16 +264,16 @@ export function AppShell({ children }: { children: ReactNode }) {
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle className="flex items-center gap-2">
-              <LogOut className="w-5 h-5 text-destructive" />Hesabdan çıxış
+              <LogOut className="w-5 h-5 text-destructive" />{t("logoutTitle")}
             </AlertDialogTitle>
             <AlertDialogDescription>
-              APEX BANK hesabınızdan çıxış etmək istədiyinizə əminsiniz? Yenidən daxil olmaq üçün email və şifrənizi daxil etməli olacaqsınız.
+              {t("logoutConfirm")}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Ləğv et</AlertDialogCancel>
+            <AlertDialogCancel>{t("cancel")}</AlertDialogCancel>
             <AlertDialogAction onClick={onSignOut} className="bg-destructive hover:bg-destructive/90 text-destructive-foreground">
-              Bəli, çıxış et
+              {t("logoutYes")}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
