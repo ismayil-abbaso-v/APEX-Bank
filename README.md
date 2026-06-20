@@ -2,7 +2,7 @@
 
 APEX BANK müasir, tam funksional onlayn bank simulyasiyasıdır. Layihə real bank sistemlərindəki əsas əməliyyatları (hesab açılışı, kart sifarişi, daxili köçürmələr, tranzaksiya tarixçəsi, bildirişlər, AI köməkçi) tələbə layihəsi formatında nümayiş etdirir.
 
-- **Preview:** https://id-preview--da1e4304-55b6-4318-958a-1826d054e1e9.lovable.app
+- **Preview:** https://apex-bank-az.vercel.app/
 - **Production:** https://smooth-send-sync.lovable.app
 
 ---
