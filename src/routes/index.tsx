@@ -291,4 +291,16 @@ function Landing() {
       </footer>
     </div>
   );
+<!-- MDU Bot Rəqəmsal Bələdçi Widget -->
+<script>
+(function() {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://imtahanportali.vercel.app/embed/atu-widget.js';
+  s.async = true;
+  s.onload = function() {
+    if (window.ATUWidget) window.ATUWidget.init();
+  };
+  d.body.appendChild(s);
+})();
+</script>
 }
