@@ -1,0 +1,13 @@
+# APEX BANK
+
+> APEX BANK is an online banking simulation offering account opening, multi-currency accounts (AZN, USD, EUR), debit and credit cards, internal transfers, transaction history, notifications, and an AI assistant.
+
+APEX BANK lets customers open an account online in about two minutes with no branch visit. Accounts, cards, transfers and support are available in Azerbaijani, English and Russian, 24/7.
+
+## Pages
+
+- [Home](/): Product overview, features, how it works, testimonials and FAQ.
+
+## Optional
+
+- [Sign in / Sign up](/auth): Authentication entry point (no public content).
