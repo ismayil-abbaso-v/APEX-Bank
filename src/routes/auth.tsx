@@ -23,7 +23,19 @@ const searchSchema = z.object({
 
 export const Route = createFileRoute("/auth")({
   validateSearch: searchSchema,
-  head: () => ({ meta: [{ title: "APEX BANK — Daxil ol" }] }),
+  head: () => ({
+    meta: [
+      { title: "Sign in — APEX BANK" },
+      { name: "description", content: "Sign in or create your APEX BANK account. Secure access to accounts, cards and transfers." },
+      { name: "robots", content: "noindex, follow" },
+      { property: "og:title", content: "Sign in — APEX BANK" },
+      { property: "og:description", content: "Secure sign in to your APEX BANK online banking account." },
+      { property: "og:url", content: "https://apexbank-az.lovable.app/auth" },
+      { name: "twitter:title", content: "Sign in — APEX BANK" },
+      { name: "twitter:description", content: "Secure sign in to your APEX BANK online banking account." },
+    ],
+    links: [{ rel: "canonical", href: "https://apexbank-az.lovable.app/auth" }],
+  }),
   component: AuthPage,
 });
 
