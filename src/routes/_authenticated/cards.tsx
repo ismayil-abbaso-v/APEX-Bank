@@ -14,7 +14,16 @@ import { formatCard, maskCard } from "@/lib/format";
 import { toast } from "sonner";
 import { Plus, Eye, EyeOff, Lock, Unlock, Copy, Check } from "lucide-react";
 
-export const Route = createFileRoute("/_authenticated/cards")({ component: CardsPage });
+export const Route = createFileRoute("/_authenticated/cards")({
+  head: () => ({
+    meta: [
+      { title: "Cards — APEX BANK" },
+      { name: "description", content: "Order and manage APEX BANK debit and credit cards with limits and freezing." },
+      { name: "robots", content: "noindex, nofollow" },
+    ],
+  }),
+  component: CardsPage,
+});
 
 function CardsPage() {
   const { t } = useI18n();

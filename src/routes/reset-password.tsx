@@ -11,7 +11,16 @@ import { passwordRules, passwordScore, isStrongPassword, scoreLabel } from "@/li
 import logoUrl from "@/assets/atu-logo.png";
 
 export const Route = createFileRoute("/reset-password")({
-  head: () => ({ meta: [{ title: "APEX BANK — Şifrəni yenilə" }] }),
+  head: () => ({
+    meta: [
+      { title: "Reset password — APEX BANK" },
+      { name: "description", content: "Reset your APEX BANK password securely." },
+      { name: "robots", content: "noindex, nofollow" },
+      { property: "og:title", content: "Reset password — APEX BANK" },
+      { property: "og:url", content: "https://apexbank-az.lovable.app/reset-password" },
+    ],
+    links: [{ rel: "canonical", href: "https://apexbank-az.lovable.app/reset-password" }],
+  }),
   component: ResetPasswordPage,
 });
 
@@ -59,7 +68,7 @@ function ResetPasswordPage() {
       <Card className="w-full max-w-md p-6 md:p-8">
         <div className="flex flex-col items-center text-center mb-6">
           <div className="w-14 h-14 rounded-xl overflow-hidden bg-white p-1.5 shadow-sm mb-3">
-            <img src={logoUrl} alt="APEX" className="w-full h-full object-contain" />
+            <img src={logoUrl} alt="APEX BANK logo" className="w-full h-full object-contain" />
           </div>
           <h1 className="text-2xl font-bold">Yeni şifrə təyin et</h1>
           <p className="text-sm text-muted-foreground mt-1">Tələblərə uyğun güclü şifrə seçin</p>

@@ -22,7 +22,13 @@ import { toast } from "sonner";
 import { Users, CreditCard, ArrowLeftRight, Calendar, BarChart3, ShieldAlert, KeyRound, Trash2, UserPlus, Power, Terminal as TerminalIcon } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/admin")({
-  head: () => ({ meta: [{ title: "APEX BANK — Admin paneli" }] }),
+  head: () => ({
+    meta: [
+      { title: "Admin — APEX BANK" },
+      { name: "description", content: "APEX BANK administration panel for users, accounts and roles." },
+      { name: "robots", content: "noindex, nofollow" },
+    ],
+  }),
   component: AdminPage,
 });
 

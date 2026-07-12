@@ -14,7 +14,16 @@ import { formatMoney } from "@/lib/format";
 import { toast } from "sonner";
 import { Plus, Copy } from "lucide-react";
 
-export const Route = createFileRoute("/_authenticated/accounts")({ component: Accounts });
+export const Route = createFileRoute("/_authenticated/accounts")({
+  head: () => ({
+    meta: [
+      { title: "Accounts — APEX BANK" },
+      { name: "description", content: "Manage your APEX BANK accounts and IBANs across AZN, USD and EUR." },
+      { name: "robots", content: "noindex, nofollow" },
+    ],
+  }),
+  component: Accounts,
+});
 
 function Accounts() {
   const { t, lang } = useI18n();

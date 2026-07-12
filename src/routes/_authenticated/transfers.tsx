@@ -27,7 +27,16 @@ import { formatMoney } from "@/lib/format";
 import { toast } from "sonner";
 import { Send, CheckCircle2, UserCircle2, ShieldCheck } from "lucide-react";
 
-export const Route = createFileRoute("/_authenticated/transfers")({ component: Transfers });
+export const Route = createFileRoute("/_authenticated/transfers")({
+  head: () => ({
+    meta: [
+      { title: "Transfers — APEX BANK" },
+      { name: "description", content: "Send instant, zero-fee internal transfers to any APEX BANK customer." },
+      { name: "robots", content: "noindex, nofollow" },
+    ],
+  }),
+  component: Transfers,
+});
 
 const schema = z.object({
   fromAccount: z.string().uuid("Mənbə hesab seçin"),

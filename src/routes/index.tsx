@@ -14,6 +14,28 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: "APEX BANK — Online Banking" },
       { name: "description", content: "Secure, fast and smart online banking with APEX BANK." },
+      { property: "og:title", content: "APEX BANK — Online Banking" },
+      { property: "og:description", content: "Open an account online in 2 minutes. Multi-currency accounts, cards, instant internal transfers, 24/7 support." },
+      { property: "og:url", content: "https://apexbank-az.lovable.app/" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:title", content: "APEX BANK — Online Banking" },
+      { name: "twitter:description", content: "Open an account online in 2 minutes. Multi-currency accounts, cards, instant internal transfers, 24/7 support." },
+    ],
+    links: [{ rel: "canonical", href: "https://apexbank-az.lovable.app/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            { "@type": "Question", name: "Is opening an APEX BANK account free?", acceptedAnswer: { "@type": "Answer", text: "Yes — opening an account and monthly maintenance on savings are free. Current accounts have a 1 AZN monthly fee." } },
+            { "@type": "Question", name: "How long does it take to open an account?", acceptedAnswer: { "@type": "Answer", text: "About two minutes online — no branch visit required." } },
+            { "@type": "Question", name: "Which currencies are supported?", acceptedAnswer: { "@type": "Answer", text: "AZN, USD and EUR, in current or savings accounts." } },
+            { "@type": "Question", name: "Are internal transfers instant?", acceptedAnswer: { "@type": "Answer", text: "Yes — APEX-to-APEX transfers are free and settle in seconds." } },
+          ],
+        }),
+      },
     ],
   }),
   component: Landing,
@@ -30,7 +52,7 @@ function Landing() {
       <header className="h-16 sticky top-0 z-40 border-b bg-card/95 backdrop-blur flex items-center justify-between px-4 md:px-10">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-lg overflow-hidden bg-white p-1 shadow-sm">
-            <img src={logoUrl} alt="APEX" className="w-full h-full object-contain" />
+            <img src={logoUrl} alt="APEX BANK logo" className="w-full h-full object-contain" />
           </div>
           <span className="font-bold text-lg">{t("appName")}</span>
         </div>
@@ -46,7 +68,7 @@ function Landing() {
               {(["az", "en", "ru"] as Lang[]).map((l) => <DropdownMenuItem key={l} onClick={() => setLang(l)}>{l.toUpperCase()}</DropdownMenuItem>)}
             </DropdownMenuContent>
           </DropdownMenu>
-          <Button variant="ghost" size="icon" onClick={toggle}>{theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}</Button>
+          <Button variant="ghost" size="icon" onClick={toggle} aria-label="Toggle theme">{theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}</Button>
           <Link to="/auth" search={{ mode: "signin" }}><Button variant="ghost" className="hidden sm:inline-flex">{t("login")}</Button></Link>
           <Link to="/auth" search={{ mode: "signup" }}><Button className="gradient-primary border-0">{t("signup")}</Button></Link>
         </div>
@@ -282,7 +304,7 @@ function Landing() {
       <footer className="border-t py-10">
         <div className="max-w-6xl mx-auto px-4 md:px-10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
           <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded bg-white p-0.5"><img src={logoUrl} alt="APEX" className="w-full h-full object-contain" /></div>
+            <div className="w-7 h-7 rounded bg-white p-0.5"><img src={logoUrl} alt="APEX BANK logo" className="w-full h-full object-contain" /></div>
             <span className="font-semibold text-foreground">APEX BANK</span>
           </div>
           <div>© {new Date().getFullYear()} APEX BANK · {t("rightsReserved")}</div>
