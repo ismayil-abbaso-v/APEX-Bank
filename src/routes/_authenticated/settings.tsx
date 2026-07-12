@@ -14,7 +14,16 @@ import { toast } from "sonner";
 import { passwordRules, passwordScore, isStrongPassword, scoreLabel } from "@/lib/password";
 import { Check, X } from "lucide-react";
 
-export const Route = createFileRoute("/_authenticated/settings")({ component: SettingsPage });
+export const Route = createFileRoute("/_authenticated/settings")({
+  head: () => ({
+    meta: [
+      { title: "Settings — APEX BANK" },
+      { name: "description", content: "Update your APEX BANK profile, language, theme and password." },
+      { name: "robots", content: "noindex, nofollow" },
+    ],
+  }),
+  component: SettingsPage,
+});
 
 function SettingsPage() {
   const { t, lang, setLang } = useI18n();

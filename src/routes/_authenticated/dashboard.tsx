@@ -8,7 +8,16 @@ import { Button } from "@/components/ui/button";
 import { formatMoney, maskIban } from "@/lib/format";
 import { ArrowDownLeft, ArrowUpRight, Plus, CreditCard, ArrowLeftRight, Wallet } from "lucide-react";
 
-export const Route = createFileRoute("/_authenticated/dashboard")({ component: Dashboard });
+export const Route = createFileRoute("/_authenticated/dashboard")({
+  head: () => ({
+    meta: [
+      { title: "Dashboard — APEX BANK" },
+      { name: "description", content: "Overview of your APEX BANK accounts, balances and recent activity." },
+      { name: "robots", content: "noindex, nofollow" },
+    ],
+  }),
+  component: Dashboard,
+});
 
 function Dashboard() {
   const { t, lang } = useI18n();

@@ -110,7 +110,7 @@ export function AppShell({ children }: { children: ReactNode }) {
 
   const Logo = ({ size = 40 }: { size?: number }) => (
     <div className="rounded-lg overflow-hidden bg-white p-1 shadow-sm shrink-0" style={{ width: size, height: size }}>
-      <img src={logoUrl} alt="APEX" className="w-full h-full object-contain" />
+      <img src={logoUrl} alt="APEX BANK logo" className="w-full h-full object-contain" />
     </div>
   );
 

@@ -9,7 +9,16 @@ import { Input } from "@/components/ui/input";
 import { formatMoney } from "@/lib/format";
 import { ArrowDownLeft, ArrowUpRight, Search } from "lucide-react";
 
-export const Route = createFileRoute("/_authenticated/transactions")({ component: Txs });
+export const Route = createFileRoute("/_authenticated/transactions")({
+  head: () => ({
+    meta: [
+      { title: "Transactions — APEX BANK" },
+      { name: "description", content: "Filter and export your APEX BANK transaction history." },
+      { name: "robots", content: "noindex, nofollow" },
+    ],
+  }),
+  component: Txs,
+});
 
 function Txs() {
   const { t, lang } = useI18n();
