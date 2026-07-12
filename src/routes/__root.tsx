@@ -56,12 +56,28 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/396b2ece-fd2e-4bba-8486-6fbfdaadb733" },
       { name: "twitter:card", content: "summary_large_image" },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "APEX BANK" },
+      { property: "og:locale", content: "en_US" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "manifest", href: "/manifest.webmanifest" },
       { rel: "icon", type: "image/jpeg", href: "/atu-logo.jpg" },
       { rel: "apple-touch-icon", href: "/atu-logo.jpg" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "APEX BANK",
+          url: "https://apexbank-az.lovable.app",
+          logo: "https://apexbank-az.lovable.app/atu-logo.jpg",
+          sameAs: [],
+          description: "APEX BANK — secure online banking. Accounts, cards and transfers in AZN, USD and EUR.",
+        }),
+      },
     ],
   }),
   shellComponent: RootShell,
