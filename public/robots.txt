@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+Disallow: /dashboard
+Disallow: /accounts
+Disallow: /cards
+Disallow: /transfers
+Disallow: /transactions
+Disallow: /settings
+Disallow: /admin
+
+Sitemap: https://apexbank-az.lovable.app/sitemap.xml
