@@ -43,6 +43,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1, maximum-scale=5" },
       { title: "APEX BANK — Online Banking" },
       { name: "description", content: "APEX BANK — secure online banking. Manage accounts, cards and transfers." },
+      { name: "google-site-verification", content: "XBVBiGjTTJOITkG1S-stLyr3_2avK8SiZI7g-bpwBBo" },
       { name: "theme-color", content: "#7a1f2b" },
       { name: "apple-mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-title", content: "APEX BANK" },
