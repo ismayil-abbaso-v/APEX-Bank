@@ -1,5 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
+import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 
 const MessageSchema = z.object({
   role: z.enum(["user", "assistant"]),
@@ -35,6 +36,7 @@ Qaydalar:
 6. Markdown formatından istifadə edə bilərsən (qalın mətn, siyahılar).`;
 
 export const chatbotAsk = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
   .inputValidator((d: unknown) => InputSchema.parse(d))
   .handler(async ({ data }) => {
     const { getSecret } = await import("@/lib/secrets.server");
