@@ -111,7 +111,6 @@ export type Database = {
           card_number: string
           card_type: Database["public"]["Enums"]["card_type"]
           created_at: string
-          cvv: string | null
           daily_limit: number
           expiry_month: number
           expiry_year: number
@@ -125,7 +124,6 @@ export type Database = {
           card_number: string
           card_type?: Database["public"]["Enums"]["card_type"]
           created_at?: string
-          cvv?: string | null
           daily_limit?: number
           expiry_month: number
           expiry_year: number
@@ -139,7 +137,6 @@ export type Database = {
           card_number?: string
           card_type?: Database["public"]["Enums"]["card_type"]
           created_at?: string
-          cvv?: string | null
           daily_limit?: number
           expiry_month?: number
           expiry_year?: number
