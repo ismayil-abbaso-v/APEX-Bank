@@ -17,6 +17,7 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/", changefreq: "weekly", priority: "1.0" },
           { path: "/auth", changefreq: "monthly", priority: "0.6" },
           { path: "/reset-password", changefreq: "yearly", priority: "0.3" },
+          { path: "/guides/how-to-open-account-online", changefreq: "monthly", priority: "0.9" },
         ];
 
         const lastmod = new Date().toISOString().slice(0, 10);

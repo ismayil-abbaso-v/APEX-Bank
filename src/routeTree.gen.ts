@@ -14,6 +14,7 @@ import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as GuidesHowToOpenAccountOnlineRouteImport } from './routes/guides.how-to-open-account-online'
 import { Route as AuthenticatedTransfersRouteImport } from './routes/_authenticated/transfers'
 import { Route as AuthenticatedTransactionsRouteImport } from './routes/_authenticated/transactions'
 import { Route as AuthenticatedSettingsRouteImport } from './routes/_authenticated/settings'
@@ -46,6 +47,12 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GuidesHowToOpenAccountOnlineRoute =
+  GuidesHowToOpenAccountOnlineRouteImport.update({
+    id: '/guides/how-to-open-account-online',
+    path: '/guides/how-to-open-account-online',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const AuthenticatedTransfersRoute = AuthenticatedTransfersRouteImport.update({
   id: '/transfers',
   path: '/transfers',
@@ -95,6 +102,7 @@ export interface FileRoutesByFullPath {
   '/settings': typeof AuthenticatedSettingsRoute
   '/transactions': typeof AuthenticatedTransactionsRoute
   '/transfers': typeof AuthenticatedTransfersRoute
+  '/guides/how-to-open-account-online': typeof GuidesHowToOpenAccountOnlineRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -108,6 +116,7 @@ export interface FileRoutesByTo {
   '/settings': typeof AuthenticatedSettingsRoute
   '/transactions': typeof AuthenticatedTransactionsRoute
   '/transfers': typeof AuthenticatedTransfersRoute
+  '/guides/how-to-open-account-online': typeof GuidesHowToOpenAccountOnlineRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -123,6 +132,7 @@ export interface FileRoutesById {
   '/_authenticated/settings': typeof AuthenticatedSettingsRoute
   '/_authenticated/transactions': typeof AuthenticatedTransactionsRoute
   '/_authenticated/transfers': typeof AuthenticatedTransfersRoute
+  '/guides/how-to-open-account-online': typeof GuidesHowToOpenAccountOnlineRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -138,6 +148,7 @@ export interface FileRouteTypes {
     | '/settings'
     | '/transactions'
     | '/transfers'
+    | '/guides/how-to-open-account-online'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -151,6 +162,7 @@ export interface FileRouteTypes {
     | '/settings'
     | '/transactions'
     | '/transfers'
+    | '/guides/how-to-open-account-online'
   id:
     | '__root__'
     | '/'
@@ -165,6 +177,7 @@ export interface FileRouteTypes {
     | '/_authenticated/settings'
     | '/_authenticated/transactions'
     | '/_authenticated/transfers'
+    | '/guides/how-to-open-account-online'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -173,6 +186,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  GuidesHowToOpenAccountOnlineRoute: typeof GuidesHowToOpenAccountOnlineRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -210,6 +224,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/how-to-open-account-online': {
+      id: '/guides/how-to-open-account-online'
+      path: '/guides/how-to-open-account-online'
+      fullPath: '/guides/how-to-open-account-online'
+      preLoaderRoute: typeof GuidesHowToOpenAccountOnlineRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authenticated/transfers': {
@@ -293,17 +314,8 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   ResetPasswordRoute: ResetPasswordRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  GuidesHowToOpenAccountOnlineRoute: GuidesHowToOpenAccountOnlineRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
