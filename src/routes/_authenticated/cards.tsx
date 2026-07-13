@@ -138,15 +138,10 @@ function CardsPage() {
                   <div className="opacity-60 flex items-center gap-1">{t("expiry")} {copied === `exp-${c.id}` ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />}</div>
                   <div className="font-semibold">{String(c.expiry_month).padStart(2, "0")}/{String(c.expiry_year).slice(-2)}</div>
                 </button>
-                <button
-                  type="button"
-                  onClick={() => visible && c.cvv && copyValue(`cvv-${c.id}`, c.cvv, "CVV")}
-                  className="text-left group"
-                  aria-label="CVV"
-                >
-                  <div className="opacity-60 flex items-center gap-1">CVV {visible && copied === `cvv-${c.id}` ? <Check className="w-3 h-3" /> : visible ? <Copy className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" /> : null}</div>
-                  <div className="font-semibold font-mono">{visible ? (c.cvv ?? "•••") : "•••"}</div>
-                </button>
+                <div className="text-left" aria-label="CVV">
+                  <div className="opacity-60">CVV</div>
+                  <div className="font-semibold font-mono">•••</div>
+                </div>
               </div>
               <div className="mt-5 flex gap-2 flex-wrap">
                 <Button size="sm" variant="secondary" onClick={() => setShow((s) => ({ ...s, [c.id]: !s[c.id] }))}>
