@@ -3,7 +3,7 @@ import { getRequest } from "@tanstack/react-start/server";
 import { z } from "zod";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 
-const FALLBACK_PUBLIC_ORIGIN = "https://equal-balance-bot.lovable.app";
+const FALLBACK_PUBLIC_ORIGIN = "https://apexbank.ismayil.site";
 
 const TransferEmailSchema = z.object({
   reference: z.string().min(1).max(80),
