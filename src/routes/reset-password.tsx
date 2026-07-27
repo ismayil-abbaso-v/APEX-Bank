@@ -17,9 +17,9 @@ export const Route = createFileRoute("/reset-password")({
       { name: "description", content: "Reset your APEX BANK password securely." },
       { name: "robots", content: "noindex, nofollow" },
       { property: "og:title", content: "Reset password — APEX BANK" },
-      { property: "og:url", content: "https://apexbank-az.lovable.app/reset-password" },
+      { property: "og:url", content: "https://apexbank.ismayil.site/reset-password" },
     ],
-    links: [{ rel: "canonical", href: "https://apexbank-az.lovable.app/reset-password" }],
+    links: [{ rel: "canonical", href: "https://apexbank.ismayil.site/reset-password" }],
   }),
   component: ResetPasswordPage,
 });

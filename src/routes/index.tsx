@@ -4,7 +4,7 @@ import { useI18n } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Shield, Globe, CreditCard, Smartphone, Lock, TrendingUp, Headphones, ArrowRight, CheckCircle2, Banknote, Building2, Sun, Moon, Zap, Wallet, Send, PiggyBank, Star, UserPlus, Download, ShieldCheck } from "lucide-react";
+import { Shield, Globe, CreditCard, Smartphone, Lock, TrendingUp, Headphones, ArrowRight, CheckCircle2, Banknote, Building2, Sun, Moon, Zap, Wallet, Send, PiggyBank, Star, UserPlus, Download, ShieldCheck, Phone, Mail } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import type { Lang } from "@/lib/i18n";
 import logoUrl from "@/assets/atu-logo.png";
@@ -16,12 +16,12 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Secure, fast and smart online banking with APEX BANK." },
       { property: "og:title", content: "APEX BANK — Online Banking" },
       { property: "og:description", content: "Open an account online in 2 minutes. Multi-currency accounts, cards, instant internal transfers, 24/7 support." },
-      { property: "og:url", content: "https://apexbank-az.lovable.app/" },
+      { property: "og:url", content: "https://apexbank.ismayil.site/" },
       { property: "og:type", content: "website" },
       { name: "twitter:title", content: "APEX BANK — Online Banking" },
       { name: "twitter:description", content: "Open an account online in 2 minutes. Multi-currency accounts, cards, instant internal transfers, 24/7 support." },
     ],
-    links: [{ rel: "canonical", href: "https://apexbank-az.lovable.app/" }],
+    links: [{ rel: "canonical", href: "https://apexbank.ismayil.site/" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -301,14 +301,46 @@ function Landing() {
         </div>
       </section>
 
-      <footer className="border-t py-10">
-        <div className="max-w-6xl mx-auto px-4 md:px-10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-          <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded bg-white p-0.5"><img src={logoUrl} alt="APEX BANK logo" className="w-full h-full object-contain" /></div>
-            <span className="font-semibold text-foreground">APEX BANK</span>
+      <footer className="border-t bg-card/40">
+        <div className="max-w-6xl mx-auto px-4 md:px-10 py-12 grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
+          <div>
+            <div className="flex items-center gap-2">
+              <div className="w-9 h-9 rounded-lg bg-white p-1 shadow-sm"><img src={logoUrl} alt="APEX BANK logo" className="w-full h-full object-contain" /></div>
+              <span className="font-bold text-lg text-foreground">APEX BANK</span>
+            </div>
+            <p className="mt-4 text-sm text-muted-foreground max-w-sm leading-relaxed">{t("footerAbout")}</p>
           </div>
-          <div>© {new Date().getFullYear()} APEX BANK · {t("rightsReserved")}</div>
-          <div className="flex gap-4"><a href="#features" className="hover:text-foreground">{t("navFeatures")}</a><a href="#faq" className="hover:text-foreground">{t("navFaq")}</a></div>
+
+          <div>
+            <div className="text-sm font-semibold text-foreground">{t("footerNav")}</div>
+            <div className="mt-4 flex flex-col gap-2.5 text-sm text-muted-foreground">
+              <a href="#features" className="hover:text-foreground transition-colors">{t("navFeatures")}</a>
+              <a href="#how" className="hover:text-foreground transition-colors">{t("navHow")}</a>
+              <a href="#faq" className="hover:text-foreground transition-colors">{t("navFaq")}</a>
+            </div>
+          </div>
+
+          <div>
+            <div className="text-sm font-semibold text-foreground">{t("footerContact")}</div>
+            <div className="mt-4 flex flex-col gap-2.5 text-sm">
+              <a href="tel:+994516616488" className="flex items-center gap-2.5 text-muted-foreground hover:text-foreground transition-colors">
+                <Phone className="w-4 h-4 shrink-0" /> 051 661 64 88
+              </a>
+              <a href="tel:+994559780030" className="flex items-center gap-2.5 text-muted-foreground hover:text-foreground transition-colors">
+                <Phone className="w-4 h-4 shrink-0" /> 055 978 00 30
+              </a>
+              <a href="mailto:a.ismayil@atu.edu.az" className="flex items-center gap-2.5 text-muted-foreground hover:text-foreground transition-colors break-all">
+                <Mail className="w-4 h-4 shrink-0" /> a.ismayil@atu.edu.az
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="border-t">
+          <div className="max-w-6xl mx-auto px-4 md:px-10 py-5 flex flex-col md:flex-row justify-between items-center gap-2 text-xs text-muted-foreground text-center md:text-left">
+            <div>© {new Date().getFullYear()} APEX BANK · {t("rightsReserved")}</div>
+            <div>{t("madeBy")}</div>
+          </div>
         </div>
       </footer>
     </div>
