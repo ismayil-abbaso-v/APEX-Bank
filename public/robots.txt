@@ -9,4 +9,4 @@ Disallow: /transactions
 Disallow: /settings
 Disallow: /admin
 
-Sitemap: https://apex-bank-az.vercel.app/sitemap.xml
+Sitemap: https://apexbank.ismayil.site/sitemap.xml
