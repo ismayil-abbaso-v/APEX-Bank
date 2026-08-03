@@ -104,17 +104,11 @@ function RootComponent() {
         <I18nProvider>
           <AuthProvider>
             <Outlet />
-            <AuthedChatBot />
+            <ChatBot />
             <Toaster richColors position="top-right" />
           </AuthProvider>
         </I18nProvider>
       </ThemeProvider>
     </QueryClientProvider>
   );
-}
-
-function AuthedChatBot() {
-  const { user } = useAuth();
-  if (!user) return null;
-  return <ChatBot />;
 }
