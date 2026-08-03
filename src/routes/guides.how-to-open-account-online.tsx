@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import { CheckCircle2, Clock, ShieldCheck, Smartphone, Wallet, ArrowRight } from "lucide-react";
 import logoUrl from "@/assets/atu-logo.png";
 
-const CANONICAL = "https://apexbank-az.lovable.app/guides/how-to-open-account-online";
+const CANONICAL = "https://apexbank.ismayil.site/guides/how-to-open-account-online";
 
 export const Route = createFileRoute("/guides/how-to-open-account-online")({
   head: () => ({

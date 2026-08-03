@@ -30,11 +30,11 @@ export const Route = createFileRoute("/auth")({
       { name: "robots", content: "noindex, follow" },
       { property: "og:title", content: "Sign in — APEX BANK" },
       { property: "og:description", content: "Secure sign in to your APEX BANK online banking account." },
-      { property: "og:url", content: "https://apexbank-az.lovable.app/auth" },
+      { property: "og:url", content: "https://apexbank.ismayil.site/auth" },
       { name: "twitter:title", content: "Sign in — APEX BANK" },
       { name: "twitter:description", content: "Secure sign in to your APEX BANK online banking account." },
     ],
-    links: [{ rel: "canonical", href: "https://apexbank-az.lovable.app/auth" }],
+    links: [{ rel: "canonical", href: "https://apexbank.ismayil.site/auth" }],
   }),
   component: AuthPage,
 });
@@ -141,8 +141,8 @@ function AuthPage() {
 
   return (
     <div className="min-h-svh flex flex-col bg-background">
-      {/* Top bar (always visible, simple on mobile) */}
-      <header className="h-14 px-4 md:px-8 flex items-center justify-between border-b bg-card/60 backdrop-blur sticky top-0 z-30">
+      {/* Top bar — fixed so it never shifts while scrolling up or down */}
+      <header className="h-14 px-4 md:px-8 flex items-center justify-between border-b bg-card/60 backdrop-blur fixed top-0 left-0 right-0 z-30">
         <Link to="/" className="flex items-center gap-2 min-w-0">
           <div className="w-8 h-8 rounded-md overflow-hidden bg-white p-0.5 shrink-0">
             <img src={logoUrl} alt="APEX" className="w-full h-full object-contain" />
@@ -164,7 +164,7 @@ function AuthPage() {
         </div>
       </header>
 
-      <main className="flex-1 flex items-center justify-center px-4 py-6 md:py-12">
+      <main className="flex-1 flex items-center justify-center px-4 py-6 md:py-12 pt-[calc(3.5rem+1.5rem)] md:pt-[calc(3.5rem+3rem)]">
         <Card className="w-full max-w-md p-6 md:p-8 shadow-lg">
           <div className="flex flex-col items-center text-center mb-6">
             <div className="w-14 h-14 rounded-xl overflow-hidden bg-white p-1.5 shadow-sm mb-3">
