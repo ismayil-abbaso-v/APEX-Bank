@@ -35,28 +35,39 @@ Qaydalar:
 6. Markdown formatından istifadə edə bilərsən (qalın mətn, siyahılar).`;
 
 export const chatbotAsk = createServerFn({ method: "POST" })
-  .middleware([requireSupabaseAuth])
   .inputValidator((d: unknown) => InputSchema.parse(d))
   .handler(async ({ data }) => {
     const { getSecret } = await import("@/lib/secrets.server");
-    const key = await getSecret("LOVABLE_API_KEY");
-    if (!key) throw new Error("AI xidməti hazırda əlçatan deyil");
+    const key =
+      (await getSecret("OPEN_AI_API")) ??
+      (await getSecret("OPENAI_API_KEY")) ??
+      (await getSecret("OPENAI_API"));
+    if (!key) throw new Error("AI xidməti hazırda əlçatan deyil (OPEN_AI_API tapılmadı)");
 
-    const { generateText } = await import("ai");
-    const { createLovableAiGatewayProvider } = await import("@/lib/ai-gateway.server");
-    const gateway = createLovableAiGatewayProvider(key);
+    const res = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${key}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: "gpt-4o-mini",
+        temperature: 0.4,
+        max_tokens: 700,
+        messages: [{ role: "system", content: SYSTEM_PROMPT }, ...data.messages],
+      }),
+    });
 
-    try {
-      const { text } = await generateText({
-        model: gateway("google/gemini-3-flash-preview"),
-        system: SYSTEM_PROMPT,
-        messages: data.messages,
-      });
-      return { text };
-    } catch (e) {
-      const msg = (e as Error).message || "";
-      if (msg.includes("429")) throw new Error("Çox sayda sorğu — bir az sonra yenidən cəhd edin");
-      if (msg.includes("402")) throw new Error("AI kredit limiti bitib — admin ilə əlaqə saxlayın");
+    if (!res.ok) {
+      const body = await res.text();
+      console.error(`[chatbot] OpenAI ${res.status}: ${body}`);
+      if (res.status === 429) throw new Error("Çox sayda sorğu — bir az sonra yenidən cəhd edin");
+      if (res.status === 401) throw new Error("AI açarı yanlışdır — admin ilə əlaqə saxlayın");
       throw new Error("Cavab alınmadı, yenidən cəhd edin");
     }
+
+    const json = (await res.json()) as { choices?: Array<{ message?: { content?: string } }> };
+    const text = json.choices?.[0]?.message?.content?.trim();
+    if (!text) throw new Error("Cavab alınmadı, yenidən cəhd edin");
+    return { text };
   });
