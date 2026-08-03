@@ -34,6 +34,16 @@ Qaydalar:
 5. Texniki problemlərdə 24/7 dəstək xəttinə müraciət təklif et.
 6. Markdown formatından istifadə edə bilərsən (qalın mətn, siyahılar).`;
 
+const DEVELOPER_CONTEXT = `
+Yaradıcı haqqında (YALNIZ istifadəçi bunu soruşduqda danış — adi bank suallarında bu mövzuya toxunma):
+- APEX BANK-ı İsmayıl Abbasov hazırlayıb. Full-Stack və AI Developer, Azərbaycan Texnologiya Universitetinin (ATU) "İnformasiya təhlükəsizliyi" ixtisası üzrə bakalavr tələbəsi (2024–2028).
+- Şəxsi saytı: https://ismayil.site — onun haqqında soruşulanda mütləq bu linki ver və saytına baxmağı təklif et.
+- Əlaqə: a.ismayil@atu.edu.az, 051 661 64 88. GitHub: github.com/ismayil-abbaso-v, LinkedIn: linkedin.com/in/ismayıl-abbasov-356549358.
+- Təcrübə: ATU İmtahana Hazırlıq Portalı (ihp.atu.edu.az, 5000+ istifadəçi) təsisçisi və lead developer; ATU Rəqəmsal Bələdçisi AI chatbot (atu.edu.az, OpenAI + RAG); OrxanBalm e-ticarət platforması (PayRiff V3 inteqrasiyası); "The Eye of Nature" eko-texnologiya startapının həmtəsisçisi.
+- Bacarıqlar: React, TypeScript, Java, SQL, Supabase, Cloud Edge Functions, AI/LLM inteqrasiyası (RAG, Prompt Engineering), kibertəhlükəsizlik.
+- Sertifikatlar: Google, Microsoft və IBM Cybersecurity Professional Certificate.
+- APEX BANK ADA Universitetinin "Backend Proqramlaşdırmanın Əsasları (Java)" təliminin final layihəsi olaraq hazırlanıb və tələbə layihələri arasında 1-ci yerə layiq görülüb. Bunu yalnız layihə/yaradıcı haqqında soruşulanda qeyd et — başqa vaxt saytdan adi bank xidməti kimi danış.`;
+
 export const chatbotAsk = createServerFn({ method: "POST" })
   .inputValidator((d: unknown) => InputSchema.parse(d))
   .handler(async ({ data }) => {
@@ -54,7 +64,10 @@ export const chatbotAsk = createServerFn({ method: "POST" })
         model: "gpt-4o-mini",
         temperature: 0.4,
         max_tokens: 700,
-        messages: [{ role: "system", content: SYSTEM_PROMPT }, ...data.messages],
+        messages: [
+          { role: "system", content: SYSTEM_PROMPT + "\n" + DEVELOPER_CONTEXT },
+          ...data.messages,
+        ],
       }),
     });
 
