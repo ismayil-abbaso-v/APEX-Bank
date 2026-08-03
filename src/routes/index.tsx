@@ -339,7 +339,16 @@ function Landing() {
         <div className="border-t">
           <div className="max-w-6xl mx-auto px-4 md:px-10 py-5 flex flex-col md:flex-row justify-between items-center gap-2 text-xs text-muted-foreground text-center md:text-left">
             <div>© {new Date().getFullYear()} APEX BANK · {t("rightsReserved")}</div>
-            <div>{t("madeBy")}</div>
+            <div>
+              <a
+                href="https://ismayil.site/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-foreground underline underline-offset-4 transition-colors"
+              >
+                {t("madeBy")}
+              </a>
+            </div>
           </div>
         </div>
       </footer>
