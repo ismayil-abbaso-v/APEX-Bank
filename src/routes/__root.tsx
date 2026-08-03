@@ -9,7 +9,6 @@ import { ThemeProvider } from "@/lib/theme";
 import { AuthProvider } from "@/lib/auth";
 import { Toaster } from "@/components/ui/sonner";
 import { ChatBot } from "@/components/chat-bot";
-import { useAuth } from "@/lib/auth";
 
 function NotFoundComponent() {
   return (
@@ -104,17 +103,11 @@ function RootComponent() {
         <I18nProvider>
           <AuthProvider>
             <Outlet />
-            <AuthedChatBot />
+            <ChatBot />
             <Toaster richColors position="top-right" />
           </AuthProvider>
         </I18nProvider>
       </ThemeProvider>
     </QueryClientProvider>
   );
-}
-
-function AuthedChatBot() {
-  const { user } = useAuth();
-  if (!user) return null;
-  return <ChatBot />;
 }

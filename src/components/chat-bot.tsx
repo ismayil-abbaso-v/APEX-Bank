@@ -2,7 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { chatbotAsk } from "@/lib/api/chatbot.functions";
 import { Button } from "@/components/ui/button";
-import { MessageCircle, X, Send, Bot, User, Loader2 } from "lucide-react";
+import { X, Send, User, Loader2 } from "lucide-react";
+
+const BOT_ICON = "/ai-bot.png";
 import { cn } from "@/lib/utils";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -66,7 +68,7 @@ export function ChatBot() {
             "animate-bounce-soft"
           )}
         >
-          <MessageCircle className="w-6 h-6" />
+          <img src={BOT_ICON} alt="APEX AI köməkçisi" className="w-14 h-14 rounded-full object-cover" />
           <span className="absolute inset-0 rounded-full bg-primary/40 animate-ping-slow -z-10" />
         </button>
       )}
@@ -82,9 +84,7 @@ export function ChatBot() {
           style={{ bottom: "calc(5.5rem + env(safe-area-inset-bottom))" }}
         >
           <div className="flex items-center gap-3 px-4 py-3 border-b bg-gradient-to-r from-primary to-primary/80 text-primary-foreground rounded-t-2xl">
-            <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center">
-              <Bot className="w-5 h-5" />
-            </div>
+            <img src={BOT_ICON} alt="APEX AI köməkçisi" className="w-9 h-9 rounded-full object-cover bg-white/20" />
             <div className="flex-1 min-w-0">
               <div className="font-semibold leading-tight">APEX köməkçisi</div>
               <div className="text-[11px] opacity-80 flex items-center gap-1.5">
@@ -106,7 +106,7 @@ export function ChatBot() {
                     m.role === "user" ? "bg-primary text-primary-foreground" : "bg-muted text-foreground"
                   )}
                 >
-                  {m.role === "user" ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
+                  {m.role === "user" ? <User className="w-4 h-4" /> : <img src={BOT_ICON} alt="" className="w-7 h-7 rounded-full object-cover" />}
                 </div>
                 <div
                   className={cn(
@@ -128,9 +128,7 @@ export function ChatBot() {
             ))}
             {busy && (
               <div className="flex gap-2 animate-fade-in">
-                <div className="w-7 h-7 rounded-full bg-muted flex items-center justify-center">
-                  <Bot className="w-4 h-4" />
-                </div>
+                <img src={BOT_ICON} alt="" className="w-7 h-7 rounded-full object-cover" />
                 <div className="bg-card border rounded-2xl rounded-tl-sm px-3 py-2.5 flex gap-1">
                   <span className="w-2 h-2 rounded-full bg-primary/60 animate-bounce" style={{ animationDelay: "0ms" }} />
                   <span className="w-2 h-2 rounded-full bg-primary/60 animate-bounce" style={{ animationDelay: "150ms" }} />
