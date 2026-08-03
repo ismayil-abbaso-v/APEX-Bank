@@ -9,7 +9,6 @@ import { ThemeProvider } from "@/lib/theme";
 import { AuthProvider } from "@/lib/auth";
 import { Toaster } from "@/components/ui/sonner";
 import { ChatBot } from "@/components/chat-bot";
-import { useAuth } from "@/lib/auth";
 
 function NotFoundComponent() {
   return (
