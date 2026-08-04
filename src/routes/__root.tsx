@@ -40,6 +40,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   head: () => ({
     meta: [
       { charSet: "utf-8" },
+      { name: "siper-site-verification", content: "e7218be4eb003ad725a6081439bb4e69" },
       { name: "viewport", content: "width=device-width, initial-scale=1, maximum-scale=5" },
       { title: "APEX BANK — Online Banking" },
       { name: "description", content: "APEX BANK — secure online banking. Manage accounts, cards and transfers." },
